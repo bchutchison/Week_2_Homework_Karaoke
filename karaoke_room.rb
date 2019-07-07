@@ -2,14 +2,14 @@
 
 class Karaoke_room
 
-  attr_reader :name, :price, :max_guests
+  attr_reader :name, :price, :max_guests, :songs
 
 
-  def initialize(name, price, max_guests, songs)
+  def initialize(name, price, max_guests)
     @name = name
     @price = price
     @max_guests = max_guests
-    @songs = songs
+    @songs = Hash.new
     @guests = []
   end
 
@@ -31,22 +31,23 @@ class Karaoke_room
   end
 
   def num_of_songs
-    return @songs.size
+    return @songs.length
   end
 
-  # def add_song(song)
-  #   unless @songs.include?(song)
-  #     @songs.push(song)
-  #   end
-  # end
+  def add_song(song)
+    unless @songs.has_key?(song)
+      @songs[song] = song.name
+    end
+  end
 
-  # def favourite_song(guest)
-  #   @songs.each do |x|
-  #     if x.name == guest.favourite_song
-  #       return "Whoo!"
-  #     end
-  #   end
-  # end
+  def favourite_song(guest)
+    @songs.each_value {|song| return "Whoo!" if song == guest.favourite_song}
+    # @songs.each_value do | song |
+    #   if song == guest.favourite_song
+    #     return "Whoo!"
+    #   end
+    # end
+  end
 
 
 end
