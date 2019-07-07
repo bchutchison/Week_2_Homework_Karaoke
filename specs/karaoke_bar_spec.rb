@@ -10,6 +10,7 @@ class Karaoke_barTest < MiniTest::Test
     @karaoke_bar = Karaoke_bar.new("Super Cube", 1000)
     @room1 = Karaoke_room.new("Room_1", 10, 8)
     @guest1 = Karaoke_guest.new("Sue", 100)
+    @guest2 = Karaoke_guest.new("Dave", 5)
   end
 
   def test_karaoke_bar_name
@@ -29,6 +30,12 @@ class Karaoke_barTest < MiniTest::Test
     @karaoke_bar.rent_out_room(@room1, @guest1)
     assert_equal(1010, @karaoke_bar.till)
     assert_equal(90, @guest1.money)
+  end
+
+  def test_rent_out_room__not_enough_money
+    @karaoke_bar.rent_out_room(@room1, @guest2)
+    assert_equal(1000, @karaoke_bar.till)
+    assert_equal(5, @guest2.money)
   end
 
 

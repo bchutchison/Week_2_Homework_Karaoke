@@ -6,8 +6,8 @@ require_relative('../karaoke_room.rb')
 class Karaoke_guestTest < MiniTest::Test
 
   def setup
-    @karaoke_guest = Karaoke_guest.new("Sue", 100)
-    @karaoke_guest2 = Karaoke_guest.new("Sue", 5)
+    @karaoke_guest = Karaoke_guest.new("Sue", 100, "Born to Run")
+    @karaoke_guest2 = Karaoke_guest.new("Sue", 5, "Mr. Brightside")
     @room1 = Karaoke_room.new("Room_1", 10, 8)
   end
 

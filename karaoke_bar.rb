@@ -13,8 +13,10 @@ class Karaoke_bar
   end
 
   def rent_out_room(room, guest)
-    till_sale(room)
-    guest.buy_room(room)
+    if  guest.money > room.price
+      guest.buy_room(room)
+      till_sale(room)
+    end
   end
 
 end

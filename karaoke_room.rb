@@ -1,12 +1,15 @@
+
+
 class Karaoke_room
 
   attr_reader :name, :price, :max_guests
 
-  def initialize(name, price, max_guests)
+
+  def initialize(name, price, max_guests, songs)
     @name = name
     @price = price
     @max_guests = max_guests
-    @songs = []
+    @songs = songs
     @guests = []
   end
 
@@ -31,19 +34,19 @@ class Karaoke_room
     return @songs.size
   end
 
-  def add_song(song)
-    if is_song_available(song) == "no"
-      @songs.push(song)
-    end
-  end
+  # def add_song(song)
+  #   unless @songs.include?(song)
+  #     @songs.push(song)
+  #   end
+  # end
 
-  def is_song_available(song)
-    if @songs.include?(song)
-      return "yes"
-    else
-      "no"
-    end
-  end
+  # def favourite_song(guest)
+  #   @songs.each do |x|
+  #     if x.name == guest.favourite_song
+  #       return "Whoo!"
+  #     end
+  #   end
+  # end
 
 
 end
