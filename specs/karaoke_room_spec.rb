@@ -9,12 +9,9 @@ class Karaoke_roomTest < MiniTest::Test
   def setup
     @karaoke_room = Karaoke_room.new("Room_1", 10, 8)
     @guest1 = Karaoke_guest.new("Sue", 100, "Born to Run")
-
     @song1 = Karaoke_song.new("Born to Run", "Bruce Springsteen",5)
     @song2 = Karaoke_song.new("Mr. Brightside", "The Killers", 2)
     @song3 = Karaoke_song.new("Tiny Dancer", "Elton John", 7)
-
-
   end
 
   def test_karaoke_room_name
@@ -84,12 +81,21 @@ class Karaoke_roomTest < MiniTest::Test
   end
 
 
-#favouite song returns Whoo in the above test, but does not pass in the test below. Note that @songs has been turned into a hash with @songs as the key, and @songs.name as the value pair.
-  # def test_favourite_song__no_song
-  #   @karaoke_room.add_song(@song3)
-  #   assert_equal(nil, @karaoke_room.favourite_song(@guest1))
-  # end
+# # favouite song returns Whoo in the above test, but does not pass in the test below. Note that @songs has been turned into a hash with @songs as the key, and @songs.name as the value pair. Note error was using assert_equal instead of assert_nil.
+  def test_favourite_song__no_song
+    @karaoke_room.add_song(@song3)
+    assert_nil(nil, @karaoke_room.favourite_song(@guest1))
+  end
 
+  def test_guest_tab_size
+    assert_equal(0, @karaoke_room.guest_tab_size)
+  end
+
+#guest tab creates a hash using the guest as the key and 0 as the value. The value will increase as the customer spends money. Error method add_guest_tab does not exist?? capital K used for Karaoke_room instead of small k!
+  def test_add_guest_tab
+    @karaoke_room.add_guest_tab(@guest1)
+    assert_equal(1, @karaoke_room.guest_tab_size)
+  end
 
 
 end

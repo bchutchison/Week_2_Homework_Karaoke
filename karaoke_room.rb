@@ -9,8 +9,10 @@ class Karaoke_room
     @name = name
     @price = price
     @max_guests = max_guests
+    #@songs changed from an array to a hash, using the @song as the key and the @song.name as the value. This change was made to allow the Whoo function to operate.
     @songs = Hash.new
     @guests = []
+    @guest_tab = Hash.new(0)
   end
 
 
@@ -47,6 +49,16 @@ class Karaoke_room
     #     return "Whoo!"
     #   end
     # end
+  end
+
+  def guest_tab_size
+    return @guest_tab.length
+  end
+
+  def add_guest_tab(guest)
+    unless @guest_tab.has_key?(guest)
+      @guest_tab[guest] = 0
+    end
   end
 
 
